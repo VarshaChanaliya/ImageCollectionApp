@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ImageCollection</title>
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <script src="{% static 'upload.js' %}"></script>
+    <link rel="shortcut icon" href="/static/images/logo.png" type="image/x-icon"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+
+<body>
+<nav class="navbar navbar-expand-sm">
+  <a class="navbar-brand" href="{% url 'Home' %}"><img class="logo-img" src="/static/images/logo.png"></a>
+</nav>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <div id="ui">
+                <h5>Image Collection</h5><br><br>
+                <form class="form-group" action="submit" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group" >
+
+                        <div class="form-group"  >
+                            <input type="text" class="form-control" placeholder="Full Name" name="name" required>
+                          </div>
+                      </div><br>
+                      <button type="submit" class="btn btn-outline-dark" onclick="location.href='{% url 'submit' %}'" name='mybtn2'>Click here to open Camera</button>
+
+            <br>
+            <br>
+                </form>
+                <div class="form-group">
+                        {% if messages %}
+                        <ul class="messages list-group">
+                            {% for message in messages %}
+                                <div class="alert alert-success list-group-item list-group-item-success" style="align-center;">  {{ message }}</div>
+                                <br>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>
